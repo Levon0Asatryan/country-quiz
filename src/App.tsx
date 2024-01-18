@@ -1,9 +1,9 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Question from "./pages/Question";
+import Question from "./pages/Question/Question";
 import { getCountries } from "./utils/getCountries";
-import { getRandomQuestion } from "./utils/getRandomQuestion";
 import { Country, countryInitalState } from "./utils/types";
+import Footer from "./components/Footer/Footer";
 
 type Props = {};
 
@@ -19,16 +19,22 @@ const App = (props: Props) => {
     };
 
     fetchData().catch(console.error);
-  });
-
-  const question = getRandomQuestion(countries);
+  }, []);
 
   return (
-    <div>
+    <div className="flex flex-col items-center h-screen">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Question first />} />
-        <Route path="/:id" element={<Question />} />
+        <Route
+          path="/"
+          element={<Question first countries={countries} setScore={setScore} />}
+        />
+        <Route
+          path="/:id"
+          element={<Question countries={countries} setScore={setScore} />}
+        />
+        <Route path="/results" element={<div>{score}</div>} />
       </Routes>
+      <Footer />
     </div>
   );
 };

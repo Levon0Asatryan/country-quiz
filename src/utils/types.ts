@@ -25,3 +25,21 @@ export const countryInitalState: Country = {
   },
   capital: [""],
 };
+
+export type Question = {
+  isItCapitalQuestion: boolean;
+  text: string;
+  flag?: {
+    alt: string;
+    svg: string;
+  };
+  answers: Answer[];
+};
+
+export const questionInitalState = {
+  isItCapitalQuestion: true,
+  text: "",
+  answers: [{ answer: "", isItRight: true }],
+};
+
+export type Answer = { answer: string; isItRight: boolean };

@@ -4,9 +4,9 @@
 
 body {
   margin: 0;
-  font-family: "Montserrat";
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("../public/assets/images/background.png") no-repeat;
+  background: url("./assets/images/background.png") no-repeat;
   background-size: cover;
 }

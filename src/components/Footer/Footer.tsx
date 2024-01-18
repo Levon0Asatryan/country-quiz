@@ -1,8 +1,8 @@
-import React from "react";
+import "../Footer/Footer.css";
 
 const Footer = () => {
   return (
-    <div className="mb-5 text-white font-medium text-sm leading-4">
+    <div className="footer text-gray95 font-medium text-sm leading-4">
       created by <span className="font-bold">Levon</span> - devChallenges.io
     </div>
   );
