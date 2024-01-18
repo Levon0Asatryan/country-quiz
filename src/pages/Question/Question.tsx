@@ -4,6 +4,8 @@ import Header from "../../components/Header/Header";
 import "./Question.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MdCheckCircleOutline } from "react-icons/md";
+import { MdOutlineCancel } from "react-icons/md";
 
 type Props = {
   questionsLimit: Number;
@@ -69,9 +71,9 @@ const Question = ({ countries, setScore, questionsLimit }: Props) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-95">
+    <div className="flex flex-col items-center justify-center h-90 md:h-95">
       <Header />
-      <div className="p-8 min-h-515 w-standart bg-white rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-72 z-10 ">
+      <div className="p-8 min-h-515 w-96 md:w-standart bg-white rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-72 z-10 ">
         {!question.isItCapitalQuestion && (
           <img
             className="mt-8 w-84 border-2 border-answer"
@@ -79,25 +81,38 @@ const Question = ({ countries, setScore, questionsLimit }: Props) => {
             alt={question.flag?.alt}
           />
         )}
-        <div className="mt-7 font-bold text-2xl leading-9 text-primary">
+        <div className="mt-7 font-bold text-2xl leading-9 text-primary select-none">
           {question.text}
         </div>
         <div className="mb-8 mt-8">
           {question.answers.map((answer, id) => (
             <div
               key={id}
-              className={`w-400 h-14 rounded-xl border-2 border-answer mt-6
-              flex items-center font-medium
+              className={` w-80 md:w-400 h-14 rounded-xl border-2 border-answer mt-6
+              flex items-center font-medium justify-between select-none
             text-answer cursor-pointer 
               ${getCollor(id)} `}
               onClick={() => {
                 buttonClick(id, answer.isItRight);
               }}
             >
-              <div className="ml-4 text-2xl leading-9">
-                {numberToLetter[id]}
+              <div className="flex items-center ">
+                <div className="ml-4 text-2xl leading-9">
+                  {numberToLetter[id]}
+                </div>
+                <div className="ml-9 text-lg ">{answer.answer}</div>
               </div>
-              <div className="ml-9 text-lg">{answer.answer}</div>
+              <div className="mr-4">
+                {buttonColors[id] ? (
+                  buttonColors[id] === " bg-green" ? (
+                    <MdCheckCircleOutline size={20} />
+                  ) : (
+                    <MdOutlineCancel size={20} />
+                  )
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
           ))}
         </div>

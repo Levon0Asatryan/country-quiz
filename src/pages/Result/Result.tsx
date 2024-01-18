@@ -17,9 +17,9 @@ const Result = ({ setScore, score }: Props) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-95">
+    <div className="flex flex-col items-center justify-center h-95 select-none">
       <Header disableIcon />
-      <div className="p-8 min-h-515 w-standart bg-white rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-72 z-10 ">
+      <div className="p-8 min-h-515 w-96 md:w-standart bg-white rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-72 z-10 ">
         <div className="flex flex-col items-center h-full w-ful">
           <img src={icon} alt="Winner" />
           <div className="mt-16 font-bold leading-11 text-blue text-5xl h-20 flex justify-center items-center">

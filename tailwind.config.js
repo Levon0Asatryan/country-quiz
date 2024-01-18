@@ -13,6 +13,7 @@ module.exports = {
     },
     extend: {
       height: {
+        90: "92%",
         95: "95%",
         116: "116px",
       },

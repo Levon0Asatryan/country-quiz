@@ -33,6 +33,8 @@ export const getRandomQuestion = (countries: Country[]): Question => {
       additionalCountyId = getNumberFrom0ToN(length);
     }
 
+    if (!mainCountry || !additionalCountries[0]) return questionInitalState;
+
     const isItCapitalQuestion = Boolean(getNumberFrom0ToN(1));
 
     let question: Question = {
@@ -40,19 +42,25 @@ export const getRandomQuestion = (countries: Country[]): Question => {
       text: "",
       answers: shuffle([
         {
-          answer: mainCountry.name.common,
+          answer: mainCountry ? mainCountry.name.common : "",
           isItRight: true,
         },
         {
-          answer: additionalCountries[0].name.common,
+          answer: additionalCountries[0]
+            ? additionalCountries[0].name.common
+            : "",
           isItRight: false,
         },
         {
-          answer: additionalCountries[1].name.common,
+          answer: additionalCountries[1]
+            ? additionalCountries[1].name.common
+            : "",
           isItRight: false,
         },
         {
-          answer: additionalCountries[2].name.common,
+          answer: additionalCountries[2]
+            ? additionalCountries[2].name.common
+            : "",
           isItRight: false,
         },
       ]),
