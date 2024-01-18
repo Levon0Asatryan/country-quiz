@@ -1,0 +1,11 @@
+.bg-green {
+  background: #60bf88;
+  color: white;
+  border-color: #60bf88;
+}
+
+.bg-red {
+  background: #ea8282;
+  color: white;
+  border-color: #ea8282;
+}

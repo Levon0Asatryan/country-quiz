@@ -13,6 +13,10 @@ const App = (props: Props) => {
   const [countries, setCountries] = useState<Country[]>([countryInitalState]);
 
   useEffect(() => {
+    console.log(score);
+  }, [score]);
+
+  useEffect(() => {
     const fetchData = async () => {
       const data = await getCountries();
       setCountries(data);
