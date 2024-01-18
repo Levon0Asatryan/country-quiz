@@ -1,24 +1,25 @@
-//import { useParams } from "react-router-dom";
 import { Country } from "../../utils/types";
 import { getRandomQuestion } from "../../utils/getRandomQuestion";
 import Header from "../../components/Header/Header";
 import "./Question.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
-  first?: boolean;
+  questionsLimit: Number;
   countries: Country[];
   setScore: Function;
 };
 
 const numberToLetter = ["A", "B", "C", "D"];
 
-const Question = ({ first = false, countries, setScore }: Props) => {
-  //const params = useParams();
+const Question = ({ countries, setScore, questionsLimit }: Props) => {
+  const navigate = useNavigate();
   const [question, setQuestion] = useState(getRandomQuestion(countries));
   const [clicked, setClicked] = useState(false);
   const [buttonColors, setButtonColors] = useState(["", "", "", ""]);
   const [canIncrease, setCanIncrease] = useState(true);
+  const [questionsCaunt, setQuestionCaunt] = useState(1);
 
   useEffect(() => {
     setQuestion(getRandomQuestion(countries));
@@ -54,6 +55,17 @@ const Question = ({ first = false, countries, setScore }: Props) => {
     } else {
       return "hover:bg-hover hover:border-hover hover:text-white";
     }
+  };
+
+  const nextQuestion = () => {
+    if (questionsCaunt === questionsLimit) {
+      navigate("/result");
+    }
+    setQuestionCaunt((prev) => prev + 1);
+    setClicked(false);
+    setButtonColors(["", "", "", ""]);
+    setCanIncrease(true);
+    setQuestion(getRandomQuestion(countries));
   };
 
   return (
@@ -92,7 +104,10 @@ const Question = ({ first = false, countries, setScore }: Props) => {
         {clicked && (
           <div className="flex justify-between">
             <div></div>
-            <div className="h-14 w-116 bg-hover flex justify-center items-center text-white rounded-xl text-lg text-bold cursor-pointer">
+            <div
+              className="h-14 w-116 bg-hover flex justify-center items-center text-white rounded-xl text-lg text-bold cursor-pointer"
+              onClick={nextQuestion}
+            >
               Next
             </div>
           </div>
