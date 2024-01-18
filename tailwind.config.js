@@ -13,7 +13,7 @@ module.exports = {
     },
     extend: {
       height: {
-        90: "92%",
+        90: "90%",
         95: "95%",
         116: "116px",
       },
@@ -22,6 +22,7 @@ module.exports = {
         116: "116px",
         162: "162px",
         84: "84px",
+        360: "360px",
         400: "400px",
       },
       lineHeight: {
@@ -29,6 +30,7 @@ module.exports = {
       },
       minHeight: {
         515: "515px",
+        400: "400px",
       },
     },
   },

@@ -71,24 +71,24 @@ const Question = ({ countries, setScore, questionsLimit }: Props) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-90 md:h-95">
+    <div className="flex flex-col items-center justify-center h-90 md:h-95 select-none">
       <Header />
-      <div className="p-8 min-h-515 w-96 md:w-standart bg-white rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-72 z-10 ">
+      <div className="p-4 md:p-8 min-h-400 md:min-h-515 w-96 md:w-standart bg-white rounded-3xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-72 z-10 ">
         {!question.isItCapitalQuestion && (
           <img
-            className="mt-8 w-84 border-2 border-answer"
+            className="mt-5 md:mt-8 w-84 border-2 border-answer"
             src={question.flag?.svg}
             alt={question.flag?.alt}
           />
         )}
-        <div className="mt-7 font-bold text-2xl leading-9 text-primary select-none">
+        <div className="flex justify-center mt-5 md:mt-7 font-bold text-2xl leading-9 text-primary select-none">
           {question.text}
         </div>
-        <div className="mb-8 mt-8">
+        <div className="mb-4 mt-2 md:mb-8 md:mt-8 flex flex-col justify-center items-center">
           {question.answers.map((answer, id) => (
             <div
               key={id}
-              className={` w-80 md:w-400 h-14 rounded-xl border-2 border-answer mt-6
+              className={` w-360 md:w-400 h-14 rounded-xl border-2 border-answer mt-4 md:mt-6
               flex items-center font-medium justify-between select-none
             text-answer cursor-pointer 
               ${getCollor(id)} `}
